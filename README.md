@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# 📚 Sistema de Librería (`libraryp2`)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicación web desarrollada en **React** para la gestión del catálogo e inventario de una librería. Permite registrar, consultar, editar y eliminar libros de forma interactiva, almacenando los datos de manera persistente en el navegador mediante `localStorage`.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## ✨ Características Principales
 
-### `npm start`
+- **Gestión CRUD completa**:
+  - **Crear (`add`)**: Registro de nuevos libros con generación automática de identificadores únicos (`uuid`).
+  - **Leer**: Visualización del catálogo completo en una tabla responsiva con contador de registros, indicadores de descuento, etiquetas de stock y previsualización de portada.
+  - **Actualizar (`update`)**: Edición en línea de cualquier libro existente cargando sus datos directamente en el formulario.
+  - **Eliminar (`delete`)**: Eliminación inmediata de libros del inventario.
+- **Persistencia de Datos**: Sincronización automática del estado del catálogo con `localStorage`.
+- **Manejo de Estado Predecible**: Implementado con hooks nativos de React (`useReducer`, `useState`, `useEffect`).
+- **Interfaz Responsiva**: Estilizada con **Bootstrap 5** para adaptarse a dispositivos móviles y de escritorio.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tecnologías Utilizadas
 
-### `npm test`
+- **React 19** (`react`, `react-dom`)
+- **Create React App** (`react-scripts`)
+- **Bootstrap 5.3** (vía CDN)
+- **UUID** (`uuid` para generación de identificadores únicos)
+- **LocalStorage API** (persistencia local en el navegador)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📂 Estructura del Proyecto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```text
+libraryp2/
+├── public/
+│   ├── index.html              # Plantilla HTML principal (incluye Bootstrap 5 CDN)
+│   └── manifest.json
+├── src/
+│   ├── components/
+│   │   ├── FormularioAdd.jsx   # Formulario para agregar y editar libros
+│   │   ├── Libros.jsx          # Componente contenedor principal y gestión de estado
+│   │   └── TablaLibros.jsx     # Tabla de visualización del catálogo y acciones
+│   ├── data/
+│   │   └── librosData.js       # Datos de ejemplo / catálogo inicial de referencia
+│   ├── reducers/
+│   │   └── LibrosReducers.js   # Reducer con las acciones 'add', 'update' y 'delete'
+│   ├── App.js                  # Componente raíz con barra de navegación
+│   └── index.js                # Punto de entrada de la aplicación React
+└── package.json                # Dependencias y scripts del proyecto
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📋 Modelo de Datos de un Libro
 
-### `npm run eject`
+Cada libro registrado en el sistema cuenta con las siguientes propiedades:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Campo | Tipo | Descripción |
+| :--- | :--- | :--- |
+| `id` | `string` | Identificador único generado con `uuid` |
+| `titulo` | `string` | Título de la obra (obligatorio) |
+| `autor` | `string` | Nombre del autor (obligatorio) |
+| `genero` | `string` | Categoría (`Novela`, `Ciencia Ficción`, `Fantasía`, `Historia`, `Biografía`, `Terror`) |
+| `precio` | `number` | Precio unitario en formato decimal |
+| `descuento` | `number` | Porcentaje de descuento aplicable (`0` - `100`) |
+| `stock` | `number` | Cantidad de unidades disponibles en inventario |
+| `portada` | `string` | URL de la imagen de portada (con fallback automático si no está disponible) |
+| `sinopsis` | `string` | Resumen o descripción breve del libro |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🚀 Instalación y Ejecución
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Prerrequisitos
 
-## Learn More
+- Tener instalado [Node.js](https://nodejs.org/) (versión 18 o superior recomendada) y `npm`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Pasos
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **Clonar el repositorio o ubicarse en el directorio del proyecto:**
+   ```bash
+   cd libraryp2
+   ```
 
-### Code Splitting
+2. **Instalar las dependencias:**
+   ```bash
+   npm install
+   ```
+   > **Nota:** Si el paquete `uuid` no se encuentra instalado en tu entorno local, puedes instalarlo ejecutando:
+   > ```bash
+   > npm install uuid
+   > ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. **Iniciar el servidor de desarrollo:**
+   ```bash
+   npm start
+   ```
+   La aplicación se abrirá automáticamente en [http://localhost:3000](http://localhost:3000).
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📜 Scripts Disponibles
 
-### Making a Progressive Web App
+En el directorio del proyecto puedes ejecutar:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **`npm start`**: Ejecuta la aplicación en modo de desarrollo.
+- **`npm test`**: Inicia el corredor de pruebas interactivo.
+- **`npm run build`**: Compila y optimiza la aplicación para producción en la carpeta `build/`.
+- **`npm run eject`**: Expone la configuración interna de Webpack, Babel y ESLint (operación irreversible).

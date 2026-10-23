@@ -1,38 +1,167 @@
-.App {
-  text-align: center;
+/* ===================================================
+   Variables y Estilos Globales
+   =================================================== */
+:root {
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --dark-color: #1e293b;
+  --bg-light: #f8fafc;
+  --text-main: #334155;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --radius: 12px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ===================================================
+   Barra de Navegación
+   =================================================== */
+.navbar {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.85rem 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.navbar-brand {
+  letter-spacing: -0.02em;
+  font-size: 1.25rem;
 }
 
-.App-link {
-  color: #61dafb;
+/* ===================================================
+   Tarjetas (Cards)
+   =================================================== */
+.card {
+  border-radius: var(--radius) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow-md) !important;
+  overflow: hidden;
+  background-color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-header {
+  border-bottom: 1px solid var(--border-color) !important;
+  padding: 1rem 1.5rem !important;
+}
+
+.card-header.bg-primary {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%) !important;
+}
+
+.card-header.bg-warning {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+}
+
+.card-header.bg-dark {
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%) !important;
+}
+
+/* ===================================================
+   Formularios e Inputs
+   =================================================== */
+.form-label {
+  color: #475569;
+  font-size: 0.875rem;
+  margin-bottom: 0.4rem;
+}
+
+.form-control,
+.form-select {
+  border-radius: 8px !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background-color: #ffffff;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+/* ===================================================
+   Botones
+   =================================================== */
+.btn {
+  border-radius: 8px !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+  transform: translateY(-1px);
+}
+
+.btn-outline-warning:hover,
+.btn-outline-danger:hover {
+  transform: translateY(-1px);
+}
+
+/* ===================================================
+   Tabla de Libros
+   =================================================== */
+.table {
+  margin-bottom: 0;
+  color: var(--text-main);
+}
+
+.table thead th {
+  background-color: #f1f5f9;
+  color: #64748b;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table tbody td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Portada del libro */
+.table img {
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease;
+}
+
+.table img:hover {
+  transform: scale(1.08);
+}
+
+/* Badges */
+.badge {
+  padding: 0.4em 0.7em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 6px;
 }
